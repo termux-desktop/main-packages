@@ -1,0 +1,32 @@
+#!/bin/bash
+# package info
+shpkg_name="pfetch"
+shpkg_description="fast system info in the shell | git build"
+shpkg_source=https://github.com/dylanaraps/pfetch
+shpkg_VERSION=0.6.0
+# package build and runtime dependencies
+shpkg_build_depends="make"
+
+shpkg_depends=""
+
+# package source code
+shpkg_source="https://github.com/dylanaraps/pfetch"
+
+shpkg_src_use_git="true"
+
+prepare(){
+	  cd ${SRCDIR}
+}
+
+build(){
+        make
+}
+
+finish(){
+	 make install
+         echo "succesfull!"
+}
+
+remove(){
+	 ${SHPKG_SUDO} rm -rf $PREFIX/bin/pfetch
+}
